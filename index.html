@@ -1,0 +1,1108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kundalini Chakra Map</title>
+<meta name="description" content="An interactive map of the seven chakras: Sanskrit names, literal meanings, the nāḍīs and granthis, and an animated Kuṇḍalinī ascent from root to crown.">
+<meta name="theme-color" content="#0e0a16">
+<!-- Social preview. After you deploy, replace YOUR-SITE-URL in the two image lines below
+     with your site's address, for example https://yourname.github.io/chakra-map -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kuṇḍalinī and the Seven Lotuses">
+<meta property="og:description" content="An interactive map of the seven chakras: Sanskrit names, literal meanings, the nāḍīs and granthis, and an animated Kuṇḍalinī ascent from root to crown.">
+<meta property="og:image" content="https://YOUR-SITE-URL/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Diagram of the seven chakras as colored lotuses on a glowing central channel, beside the title Kuṇḍalinī and the seven lotuses.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kuṇḍalinī and the Seven Lotuses">
+<meta name="twitter:description" content="An interactive map of the seven chakras: Sanskrit names, literal meanings, the nāḍīs and granthis, and an animated Kuṇḍalinī ascent from root to crown.">
+<meta name="twitter:image" content="https://YOUR-SITE-URL/preview.png">
+<meta name="twitter:image:alt" content="Diagram of the seven chakras as colored lotuses on a glowing central channel, beside the title Kuṇḍalinī and the seven lotuses.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230e0a16'/%3E%3Cg fill='%23f4b84a'%3E%3Cellipse cx='32' cy='17' rx='5.5' ry='11' transform='rotate%280 32 32%29'/%3E%3Cellipse cx='32' cy='17' rx='5.5' ry='11' transform='rotate%2845 32 32%29'/%3E%3Cellipse cx='32' cy='17' rx='5.5' ry='11' transform='rotate%2890 32 32%29'/%3E%3Cellipse cx='32' cy='17' rx='5.5' ry='11' transform='rotate%28135 32 32%29'/%3E%3Cellipse cx='32' cy='17' rx='5.5' ry='11' transform='rotate%28180 32 32%29'/%3E%3Cellipse cx='32' cy='17' rx='5.5' ry='11' transform='rotate%28225 32 32%29'/%3E%3Cellipse cx='32' cy='17' rx='5.5' ry='11' transform='rotate%28270 32 32%29'/%3E%3Cellipse cx='32' cy='17' rx='5.5' ry='11' transform='rotate%28315 32 32%29'/%3E%3C/g%3E%3Ccircle cx='32' cy='32' r='8' fill='%230e0a16' stroke='%23ffe5a3' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gotu&family=Mukta:wght@400;500;600&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap">
+<style>
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+[hidden] { display: none !important; }
+img { max-width: 100%; }
+</style>
+<style>
+/* Layout: three-column exhibit (ascent console | subtle-body diagram | lotus details), stacking to one column on phones */
+:root {
+  color-scheme: dark;
+  --ground: #0e0a16;
+  --ground-2: #161120;
+  --ground-3: #221b2f;
+  --rule: #322941;
+  --ivory: #f2eadc;
+  --mist: #ada1bd;
+  --dim: #7b708d;
+  --gold: #f4b84a;
+  --gold-hi: #ffe5a3;
+  --gold-glow: rgba(244, 184, 74, .36);
+  --ida: #9ec4ff;
+  --pingala: #ff9a55;
+  --moon: #fbf8f0;
+  --letter: #fffaf0;
+  --ink-halo: rgba(14, 10, 22, .62);
+  --aura: rgba(106, 63, 180, .17);
+  --aura-c: #6a3fb4;
+  --hover: rgba(242, 234, 220, .05);
+  --shade: #000;
+  --light: #fff;
+  --f-display: "Gotu", "Noto Serif", Georgia, serif;
+  --f-sk: "Tiro Devanagari Sanskrit", "Noto Serif Devanagari", "Noto Serif", Georgia, serif;
+  --f-body: "Mukta", "Noto Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* modern rainbow: petal / yantra / seed syllable */
+  --m1: #ff4b5c; --m1y: #ffb3ba; --m1b: #3d0a12;
+  --m2: #ff8b3d; --m2y: #ffd0a6; --m2b: #fff1e2;
+  --m3: #ffd13f; --m3y: #fff0a6; --m3b: #3a2a00;
+  --m4: #3ed98a; --m4y: #b5f3d2; --m4b: #05291a;
+  --m5: #45abff; --m5y: #c4e4ff; --m5b: #07243f;
+  --m6: #8079ff; --m6y: #d2ceff; --m6b: #1a1440;
+  --m7: #c57eff; --m7y: #efd9ff; --m7b: #2a0f45;
+  /* colors the 1577 text gives */
+  --k1: #d62a47; --k1y: #f2c230; --k1b: #4a1300;
+  --k2: #e64b2d; --k2y: #f3efe4; --k2b: #fff1e2;
+  --k3: #4d6096; --k3y: #ea4330; --k3b: #fff1df;
+  --k4: #df362f; --k4y: #918a95; --k4b: #160f1c;
+  --k5: #8c70a2; --k5y: #f1eff5; --k5b: #1f1530;
+  --k6: #e7eaf3; --k6y: #e7eaf3; --k6b: #2a2340;
+  --k7: #f7f3ea; --k7y: #f6a525; --k7b: #2a0f45;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { background: var(--ground); }
+body { margin: 0; color: var(--ivory); font: 400 16px/1.55 var(--f-body); -webkit-font-smoothing: antialiased; }
+a { color: var(--gold-hi); text-underline-offset: 3px; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.app {
+  --p1: var(--m1); --y1: var(--m1y); --b1: var(--m1b);
+  --p2: var(--m2); --y2: var(--m2y); --b2: var(--m2b);
+  --p3: var(--m3); --y3: var(--m3y); --b3: var(--m3b);
+  --p4: var(--m4); --y4: var(--m4y); --b4: var(--m4b);
+  --p5: var(--m5); --y5: var(--m5y); --b5: var(--m5b);
+  --p6: var(--m6); --y6: var(--m6y); --b6: var(--m6b);
+  --p7: var(--m7); --y7: var(--m7y); --b7: var(--m7b);
+  background: radial-gradient(1100px 640px at 50% 0%, var(--aura), transparent 72%);
+}
+.app[data-colors="classical"] {
+  --p1: var(--k1); --y1: var(--k1y); --b1: var(--k1b);
+  --p2: var(--k2); --y2: var(--k2y); --b2: var(--k2b);
+  --p3: var(--k3); --y3: var(--k3y); --b3: var(--k3b);
+  --p4: var(--k4); --y4: var(--k4y); --b4: var(--k4b);
+  --p5: var(--k5); --y5: var(--k5y); --b5: var(--k5b);
+  --p6: var(--k6); --y6: var(--k6y); --b6: var(--k6b);
+  --p7: var(--k7); --y7: var(--k7y); --b7: var(--k7b);
+}
+
+.wrap {
+  max-width: 1240px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 64px;
+}
+
+/* hero */
+.hero { margin-bottom: 26px; }
+.eyebrow { margin: 0 0 4px; font-weight: 600; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--mist); }
+.eyebrow .sk { font-family: var(--f-sk); font-size: 14px; font-weight: 400; letter-spacing: .01em; text-transform: none; }
+h1 { margin: 0; font-weight: 400; display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 22px; }
+.h1-dev { font: 400 clamp(46px, 7.4vw, 78px)/1.15 var(--f-sk); color: var(--gold); text-shadow: 0 0 34px var(--gold-glow); }
+.h1-en { font: 400 clamp(25px, 3.3vw, 38px)/1.2 var(--f-display); text-wrap: balance; }
+.lead { margin: 8px 0 0; max-width: 66ch; color: var(--mist); font-size: 17px; }
+
+/* exhibit grid */
+.exhibit { display: grid; gap: 18px; grid-template-columns: minmax(0, 1fr); grid-template-areas: "play" "viz" "view" "details"; align-items: start; }
+.play { grid-area: play; min-width: 0; }
+.view { grid-area: view; min-width: 0; }
+.viz { grid-area: viz; min-width: 0; position: relative; }
+.details { grid-area: details; min-width: 0; }
+@media (min-width: 780px) {
+  .exhibit { grid-template-columns: minmax(0, 1fr) minmax(300px, 360px); grid-template-areas: "viz play" "viz view" "viz details"; grid-template-rows: auto auto 1fr; column-gap: 28px; }
+}
+@media (min-width: 1160px) {
+  .exhibit { grid-template-columns: minmax(250px, 285px) minmax(0, 560px) minmax(310px, 350px); grid-template-areas: "play viz details" "view viz details"; grid-template-rows: auto 1fr; justify-content: space-between; column-gap: 32px; }
+}
+
+/* ascent console */
+.console { background: var(--ground-2); border: 1px solid var(--rule); border-radius: 16px; padding: 16px; }
+.btn-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 7px; height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid var(--rule); background: var(--ground-3); cursor: pointer; font-weight: 600; font-size: 15px; transition: background-color .2s, border-color .2s, opacity .2s; }
+.btn:hover:not(:disabled) { border-color: var(--dim); }
+.btn:disabled { opacity: .35; cursor: default; }
+.btn svg { width: 18px; height: 18px; fill: currentColor; flex: none; }
+.btn.primary { flex: 1 1 auto; background: var(--gold); border-color: var(--gold); color: var(--ground); justify-content: center; }
+.btn.primary:hover:not(:disabled) { background: var(--gold-hi); border-color: var(--gold-hi); }
+.btn.icon { width: 44px; padding: 0; justify-content: center; }
+.narr-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.linkbtn { flex: none; padding: 0; border: 0; background: none; color: var(--gold-hi); font-size: 13.5px; font-weight: 500; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.linkbtn:hover { color: var(--ivory); }
+.btn.hint { animation: hint 1.6s ease-in-out infinite; }
+@keyframes hint { 50% { border-color: var(--gold); box-shadow: 0 0 0 3px var(--gold-glow); } }
+
+.rail { position: relative; display: flex; justify-content: space-between; align-items: center; margin: 16px 0 2px; }
+.rail::before { content: ""; position: absolute; left: 12px; right: 12px; top: 50%; height: 1px; background: var(--rule); }
+.stop { position: relative; width: 26px; height: 26px; padding: 0; border: 0; border-radius: 50%; background: transparent; cursor: pointer; display: grid; place-items: center; }
+.stop span { width: 10px; height: 10px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 3px var(--ground-2); transition: transform .3s, opacity .3s, box-shadow .3s; }
+.stop.future span { opacity: .32; }
+.stop.on span { transform: scale(1.55); box-shadow: 0 0 0 3px var(--ground-2), 0 0 14px var(--c); }
+.rail-ends { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--dim); letter-spacing: .04em; margin: 0 2px; }
+
+.narr { margin-top: 12px; min-height: 208px; }
+.narr-k { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--mist); }
+.narr-t { margin: 4px 0 6px; font: 400 23px/1.25 var(--f-display); text-wrap: balance; }
+.narr-x { margin: 0; font-size: 15.5px; }
+
+.chain { margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--rule); }
+.mini-l { margin: 0 0 8px; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--mist); }
+.mini-l .sk { font-family: var(--f-sk); text-transform: none; letter-spacing: 0; font-weight: 400; font-size: 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.chip { --c: var(--mist); display: inline-flex; align-items: baseline; gap: 5px; padding: 3px 9px 2px; border-radius: 999px; border: 1px solid var(--rule); background: var(--ground-3); font-size: 13px; color: var(--mist); transition: opacity .45s, border-color .45s, box-shadow .45s, color .45s; }
+.chip b { font: 400 15px/1.2 var(--f-sk); color: var(--ivory); }
+.chip[data-state="active"] { border-color: var(--c); color: var(--ivory); box-shadow: 0 0 16px -3px var(--c); }
+.chip[data-state="gone"] { opacity: .38; border-style: dashed; }
+
+/* view options */
+.view { display: grid; gap: 14px; padding: 2px 2px 4px; }
+.ctl-l { display: block; margin-bottom: 6px; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--mist); }
+.seg { position: relative; display: flex; flex-wrap: wrap; gap: 3px; padding: 3px; border: 1px solid var(--rule); border-radius: 12px; background: var(--ground-2); }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg label { flex: 1 1 auto; text-align: center; padding: 6px 9px 5px; border-radius: 9px; font-size: 14px; font-weight: 500; color: var(--mist); cursor: pointer; white-space: nowrap; transition: background-color .2s, color .2s; }
+.seg label:hover { color: var(--ivory); }
+.seg input:checked + label { background: var(--ground-3); color: var(--ivory); box-shadow: inset 0 0 0 1px var(--rule); }
+.seg input:focus-visible + label { outline: 2px solid var(--gold); outline-offset: 1px; }
+.ctl-note { margin: 7px 2px 0; font-size: 13.5px; line-height: 1.45; color: var(--mist); }
+.togs { display: flex; flex-wrap: wrap; gap: 8px; }
+.tog { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px 5px 9px; border: 1px solid var(--rule); border-radius: 999px; cursor: pointer; font-size: 14px; }
+.tog input { appearance: none; -webkit-appearance: none; flex: none; width: 16px; height: 16px; margin: 0; border-radius: 50%; border: 1.5px solid var(--dim); cursor: pointer; }
+.tog input:checked { border-color: var(--gold); background: radial-gradient(circle, var(--gold) 0 42%, transparent 46%); }
+.tog input:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* diagram */
+.viz svg.diagram { display: block; width: 100%; height: auto; max-width: 560px; margin: 0 auto; }
+.diagram text { -webkit-user-select: none; user-select: none; }
+.lab-dev { font-family: var(--f-sk); fill: var(--ivory); transition: fill .2s; }
+.lab-iast { font-family: var(--f-sk); fill: var(--mist); }
+.lab-en { font-family: var(--f-body); font-weight: 600; fill: var(--ivory); transition: fill .2s; }
+.lab-sec { font-family: var(--f-body); fill: var(--mist); }
+.ck { cursor: pointer; outline: none; }
+.ck:hover .lab-en, .ck:focus-visible .lab-en, .ck.is-sel .lab-en, .ck.is-sel .lab-dev { fill: var(--gold-hi); }
+.ck:focus-visible .focus-ring { opacity: 1; }
+.focus-ring { fill: none; stroke: var(--gold); stroke-width: 2; opacity: 0; }
+.hit { fill: transparent; }
+.petals { fill: var(--p); stroke: color-mix(in oklab, var(--p) 55%, var(--shade)); stroke-width: .8; stroke-linejoin: round; transition: fill .9s ease, stroke .9s ease; }
+.veins { fill: none; stroke: color-mix(in oklab, var(--p) 45%, var(--light)); stroke-width: .8; stroke-linecap: round; opacity: .55; transition: stroke .9s ease; }
+.peri { fill: var(--ground-2); stroke: var(--p); stroke-width: 1.2; transition: stroke .9s ease; }
+.peri-in { fill: var(--ground-2); }
+.yan { fill: var(--y); transition: fill .9s ease; }
+.moon { fill: var(--moon); }
+.tri-ink { fill: none; stroke: var(--ground); stroke-width: 1.2; stroke-linejoin: round; }
+.bindu { fill: var(--ground); }
+.bija { font-family: var(--f-sk); fill: var(--b); transition: fill .9s ease; }
+.pl-letter { font-family: var(--f-sk); fill: var(--letter); stroke: var(--ink-halo); stroke-width: 2.6; paint-order: stroke; stroke-linejoin: round; }
+
+.chan-outer { stroke: var(--ground-3); stroke-width: 7; stroke-linecap: round; transition: stroke .3s; }
+.chan-inner { stroke: var(--dim); stroke-width: 1.2; opacity: .75; }
+.chan.is-sel .chan-outer { stroke: color-mix(in oklab, var(--gold) 40%, var(--ground-3)); }
+.nadi { fill: none; stroke-width: 2.2; stroke-linecap: round; opacity: .9; transition: stroke-width .25s, opacity .3s; }
+.nadi.ida { stroke: var(--ida); }
+.nadi.pingala { stroke: var(--pingala); }
+.nadi.is-sel { stroke-width: 4; opacity: 1; }
+.flow { fill: none; stroke: var(--light); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 1.5 15; animation: flow 2.2s linear infinite; }
+@keyframes flow { to { stroke-dashoffset: -66; } }
+.hit-line { fill: none; stroke: transparent; stroke-width: 16; pointer-events: stroke; cursor: pointer; }
+.n-lab { font-family: var(--f-sk); cursor: pointer; }
+.n-lab.ida { fill: var(--ida); }
+.n-lab.pingala { fill: var(--pingala); }
+.n-lab.sus { fill: var(--gold-hi); }
+.n-lab.is-sel { text-decoration: underline; }
+
+.trail-glow { fill: none; stroke: var(--gold); stroke-width: 11; opacity: .17; }
+.trail-core { fill: none; stroke: var(--gold-hi); stroke-width: 1.6; opacity: .9; }
+.body-glow { fill: none; stroke: var(--gold); stroke-width: 9; opacity: .22; stroke-linecap: round; stroke-linejoin: round; }
+.body { fill: none; stroke: var(--gold); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+.head-core { fill: var(--gold-hi); }
+.linga { fill: var(--ground-3); stroke: color-mix(in oklab, var(--gold) 55%, var(--ground-3)); stroke-width: 1; }
+.serpent-over { cursor: pointer; outline: none; }
+.serpent-over.rest .body-glow { animation: breathe 3.6s ease-in-out infinite; }
+.serpent-over.is-sel .body { stroke: var(--gold-hi); }
+@keyframes breathe { 50% { opacity: .5; } }
+
+.knot { cursor: pointer; outline: none; }
+.knot-band { fill: var(--ground); }
+.knot-cord { fill: none; stroke: var(--ivory); stroke-width: 1.4; }
+.knot-lead { stroke: var(--dim); stroke-width: .8; stroke-dasharray: 2 3; }
+.knot-lab { font-family: var(--f-sk); font-style: italic; fill: var(--mist); transition: fill .2s; }
+.knot:hover .knot-lab, .knot:focus-visible .knot-lab, .knot.is-sel .knot-lab { fill: var(--gold-hi); }
+.knot.is-sel .knot-cord { stroke: var(--gold-hi); }
+
+.rays line { stroke: var(--p7); stroke-width: 1.2; stroke-linecap: round; transition: stroke .9s; }
+.sel-ring { fill: none; stroke: var(--gold-hi); stroke-width: 1.3; stroke-dasharray: 2 5; transform-box: fill-box; transform-origin: center; animation: spin 30s linear infinite; transition: opacity .3s; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.triveni { fill: none; stroke: var(--light); stroke-width: 1.3; opacity: 0; transition: opacity .6s; }
+.triveni.on { opacity: .85; }
+.nectar circle { fill: var(--moon); }
+.nadi-layer, .knot-layer { transition: opacity .4s; }
+.hide-nadi .nadi-layer, .hide-knot .knot-layer { opacity: 0; pointer-events: none; }
+
+/* details panel */
+.details { background: var(--ground-2); border: 1px solid var(--rule); border-radius: 16px; padding: 18px 18px 20px; }
+.d-k { margin: 0; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--mist); }
+.d-dev { margin: 6px 0 0; font: 400 40px/1.2 var(--f-sk); }
+.d-iast { margin: 0; font: 400 21px/1.3 var(--f-sk); color: var(--gold-hi); }
+.d-en { margin: 4px 0 0; font-size: 16px; }
+.d-en span { color: var(--mist); }
+.plate-wrap { display: grid; place-items: center; margin: 12px 0 4px; border-radius: 50%; background: radial-gradient(closest-side, color-mix(in oklab, var(--c) 24%, transparent), transparent); }
+.plate { display: block; width: min(232px, 100%); height: auto; }
+.facts { display: grid; grid-template-columns: minmax(6.6em, 31%) minmax(0, 1fr); gap: 8px 14px; margin: 14px 0 0; font-size: 14.5px; line-height: 1.45; }
+.facts dt { padding-top: 2px; font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--mist); }
+.facts dd { margin: 0; }
+.dv { font-family: var(--f-sk); font-size: 1.12em; }
+.sw { display: inline-block; width: 11px; height: 11px; border-radius: 50%; vertical-align: -1px; margin-right: 5px; box-shadow: 0 0 0 1px var(--rule); }
+.d-ascent { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--rule); }
+.d-ascent h3 { margin: 0 0 4px; font: 400 18px/1.3 var(--f-display); color: var(--gold-hi); }
+.d-ascent p { margin: 0; font-size: 15px; }
+.d-desc { margin: 12px 0 0; font-size: 15.5px; }
+.d-note { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--rule); font-size: 13.5px; color: var(--mist); }
+.art { display: block; width: 100%; max-width: 280px; height: auto; margin: 14px auto 2px; }
+.mini .mm-chan { stroke: var(--dim); stroke-width: 3; stroke-linecap: round; opacity: .35; }
+.mini .mm-ida { fill: none; stroke: var(--ida); stroke-width: 2; opacity: .3; }
+.mini .mm-pin { fill: none; stroke: var(--pingala); stroke-width: 2; opacity: .3; }
+.mini .mm-knot { fill: var(--ivory); opacity: .3; }
+.mini .on { opacity: 1; }
+.mini .mm-chan.on { stroke: var(--gold); }
+.mini .mm-knot.on { fill: var(--gold-hi); }
+.mini .mm-ida.on, .mini .mm-pin.on { stroke-width: 3; }
+.mini .mm-t { font-family: var(--f-body); font-size: 11px; fill: var(--dim); }
+@media (max-width: 380px) { .facts { grid-template-columns: 1fr; gap: 0; } .facts dd { margin-bottom: 9px; } }
+
+/* sections */
+.sec { margin-top: 60px; }
+.sec h2 { margin: 0; font: 400 clamp(24px, 3vw, 30px)/1.2 var(--f-display); text-wrap: balance; }
+.sec-sub { margin: 6px 0 18px; max-width: 66ch; color: var(--mist); }
+.table-scroll { overflow-x: auto; border: 1px solid var(--rule); border-radius: 14px; background: var(--ground-2); }
+table { width: 100%; min-width: 920px; border-collapse: collapse; font-size: 14.5px; }
+th { text-align: left; padding: 11px 14px; font-size: 11.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--mist); border-bottom: 1px solid var(--rule); white-space: nowrap; }
+td { padding: 12px 14px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr { cursor: pointer; transition: background-color .15s; }
+tbody tr:hover, tbody tr.is-sel { background: var(--hover); }
+tbody tr:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+.t-n { font-variant-numeric: tabular-nums; color: var(--mist); white-space: nowrap; }
+.t-dev { display: block; font: 400 21px/1.25 var(--f-sk); }
+.t-iast { display: block; font: 400 15px/1.3 var(--f-sk); color: var(--gold-hi); }
+.t-sub { display: block; font-size: 13px; color: var(--mist); }
+
+.gloss { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); column-gap: 32px; margin: 0; }
+.g { padding: 14px 0 16px; border-top: 1px solid var(--rule); }
+.g dt { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; }
+.g-dev { font: 400 21px/1.25 var(--f-sk); }
+.g-iast { font: italic 400 18px/1.25 var(--f-sk); color: var(--gold-hi); }
+.g-lit { font-size: 14px; color: var(--mist); }
+.g dd { margin: 4px 0 0; font-size: 15px; }
+
+.crit { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; max-width: 72ch; }
+.crit li { position: relative; padding-left: 20px; color: var(--mist); }
+.crit li::before { content: ""; position: absolute; left: 0; top: .6em; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+.crit strong { color: var(--ivory); font-weight: 600; }
+.sources { margin-top: 56px; padding-top: 18px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--mist); }
+.sources p { margin: 0; }
+.sources ul { margin: 6px 0 0; padding-left: 18px; display: grid; gap: 3px; }
+.sk-i { font-family: var(--f-sk); font-style: italic; }
+
+@media (prefers-reduced-motion: reduce) {
+  .flow, .sel-ring, .serpent-over.rest .body-glow, .btn.hint { animation: none !important; }
+  .petals, .veins, .peri, .yan, .bija, .chip { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="app" data-colors="modern">
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow">The subtle body in the <span class="sk">Ṣaṭ-cakra-nirūpaṇa</span>, 1577</p>
+    <h1><span class="h1-dev" lang="sa">कुण्डलिनी</span><span class="h1-en">Kuṇḍalinī and the seven lotuses</span></h1>
+    <p class="lead">The “coiled one” sleeps at the base of the spine. In tantric yoga she is woken and led up the central channel through six lotuses to the thousand-petaled crown, dissolving each element into the next on the way. Select any lotus, channel or knot, or press Awaken.</p>
+  </header>
+
+  <main class="exhibit">
+    <section class="play console" aria-label="The ascent">
+      <div class="btn-row">
+        <button class="btn primary" id="btn-play" type="button"></button>
+        <button class="btn icon" id="btn-prev" type="button" aria-label="Previous stage"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.4 7.4 14 6l-6 6 6 6 1.4-1.4-4.6-4.6z"/></svg></button>
+        <button class="btn icon" id="btn-next" type="button" aria-label="Next stage"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 6 8.6 7.4l4.6 4.6-4.6 4.6L10 18l6-6z"/></svg></button>
+      </div>
+      <div class="rail" id="rail" role="group" aria-label="Stages of the ascent"></div>
+      <div class="rail-ends" aria-hidden="true"><span>asleep</span><span>return</span></div>
+      <div class="narr" aria-live="polite">
+        <div class="narr-head"><p class="narr-k" id="narr-k"></p><button class="linkbtn" id="btn-map" type="button" hidden>Map view</button></div>
+        <h2 class="narr-t" id="narr-t"></h2>
+        <p class="narr-x" id="narr-x"></p>
+      </div>
+      <div class="chain">
+        <p class="mini-l">Dissolution <span class="sk">(laya)</span></p>
+        <div class="chips" id="chips"></div>
+      </div>
+    </section>
+
+    <section class="view" aria-label="Diagram options">
+      <div>
+        <span class="ctl-l" id="lens-l">Annotation</span>
+        <div class="seg" role="radiogroup" aria-labelledby="lens-l">
+          <input type="radio" name="lens" id="lens-meaning" value="meaning" checked><label for="lens-meaning">Meaning</label>
+          <input type="radio" name="lens" id="lens-element" value="element"><label for="lens-element">Element</label>
+          <input type="radio" name="lens" id="lens-petals" value="petals"><label for="lens-petals">Petals</label>
+          <input type="radio" name="lens" id="lens-modern" value="modern"><label for="lens-modern">Modern</label>
+        </div>
+        <p class="ctl-note" id="lens-note"></p>
+      </div>
+      <div>
+        <span class="ctl-l" id="col-l">Colors</span>
+        <div class="seg" role="radiogroup" aria-labelledby="col-l">
+          <input type="radio" name="colors" id="col-modern" value="modern" checked><label for="col-modern">Modern rainbow</label>
+          <input type="radio" name="colors" id="col-classical" value="classical"><label for="col-classical">1577 text</label>
+        </div>
+        <p class="ctl-note" id="col-note"></p>
+      </div>
+      <div>
+        <span class="ctl-l">Layers</span>
+        <div class="togs">
+          <label class="tog"><input type="checkbox" id="tg-nadi" checked> Iḍā and Piṅgalā</label>
+          <label class="tog"><input type="checkbox" id="tg-knot" checked> Granthis</label>
+        </div>
+      </div>
+    </section>
+
+    <div class="viz" id="viz"></div>
+
+    <aside class="details" id="details" aria-live="polite"></aside>
+  </main>
+
+  <section class="sec" aria-labelledby="ref-h">
+    <h2 id="ref-h">The seven at a glance</h2>
+    <p class="sec-sub">Numbered from the base, in the order Kuṇḍalinī reaches them. Select a row to open it in the panel above.</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th scope="col">#</th><th scope="col">Sanskrit</th><th scope="col">Literally</th><th scope="col">English name</th><th scope="col">Location</th><th scope="col">Element</th><th scope="col">Seed</th><th scope="col">Petals</th></tr></thead>
+        <tbody id="ref-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="terms-h">
+    <h2 id="terms-h">Terms</h2>
+    <p class="sec-sub">The Sanskrit vocabulary of the diagram, with literal meanings.</p>
+    <dl class="gloss" id="gloss"></dl>
+  </section>
+
+  <section class="sec" aria-labelledby="crit-h">
+    <h2 id="crit-h">Reading this map critically</h2>
+    <p class="sec-sub">What is traditional here, what is modern, and what is not supported by evidence.</p>
+    <ul class="crit">
+      <li><strong>One text, one system.</strong> The seven-center map follows Pūrṇānanda’s <span class="sk-i">Ṣaṭ-cakra-nirūpaṇa</span> (1577), known in English through John Woodroffe’s translation, <em>The Serpent Power</em> (1919). Other tantric traditions teach five, six, nine, ten, twenty-one or more centers, often in different places. Even this text counts six cakras and describes the crown lotus separately, above them.</li>
+      <li><strong>The rainbow is modern.</strong> The red-to-violet sequence took shape among Theosophists and color therapists between the 1920s and 1950s. The source text gives a red heart lotus and a rain-cloud blue navel lotus. Switch the color setting to compare.</li>
+      <li><strong>So are the psychological meanings.</strong> Survival, sexuality, willpower, love, expression and intuition come from 20th-century Western writers, from Jung’s 1932 seminar to the human potential movement of the 1970s. The Sanskrit sources tie each center to an element, a seed syllable, deities and letters, not to emotions.</li>
+      <li><strong>A map for meditation, not anatomy.</strong> The cakras are supports for visualization. No physical structures correspond to them, and links to nerve plexuses or endocrine glands are modern analogies.</li>
+      <li><strong>Handle with care.</strong> Intense practices aimed at waking Kuṇḍalinī are reported to cause strong physical and psychological reactions. Persistent or distressing symptoms are a reason to see a medical or mental health professional.</li>
+    </ul>
+  </section>
+
+  <footer class="sources">
+    <p>Sources</p>
+    <ul>
+      <li><a href="https://www.wisdomlib.org/hinduism/book/shat-cakra-nirupana-english/d/doc1144836.html" target="_blank" rel="noopener">Ṣaṭ-cakra-nirūpaṇa, tr. Arthur Avalon (verse 19, Maṇipūra)</a>, wisdomlib</li>
+      <li><a href="https://archive.org/details/x-the-serpent-power/x%20%20The%20serpent%20power" target="_blank" rel="noopener">Arthur Avalon (John Woodroffe), The Serpent Power</a>, Internet Archive</li>
+      <li><a href="https://www.theosophical.org/publications/quest-magazine/the-rainbow-body-how-the-western-chakra-system-came-to-be-2" target="_blank" rel="noopener">Kurt Leland, “The Rainbow Body: How the Western Chakra System Came to Be”</a>, Quest</li>
+      <li><a href="https://medium.com/@hareesh_59037/the-real-story-on-the-chakras-b321fd662daa" target="_blank" rel="noopener">Christopher Wallis, “The Real Story on the Chakras”</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Chakra" target="_blank" rel="noopener">Chakra</a>, Wikipedia</li>
+    </ul>
+  </footer>
+</div>
+</div>
+
+<script>
+(() => {
+'use strict';
+
+/* ---------- content ---------- */
+const CH = [
+  { dev: 'मूलाधार', iast: 'Mūlādhāra', en: 'Root', enFull: 'Root chakra', short: 'Root support',
+    parts: 'mūla, “root” + ādhāra, “support”', loc: 'Base of the spine, at the perineum', locShort: 'Base of the spine',
+    el: { dev: 'पृथ्वी', iast: 'pṛthvī', en: 'earth' }, sense: 'smell',
+    bija: 'लं', bijaI: 'laṃ', petals: 4, letters: ['वं', 'शं', 'षं', 'सं'],
+    yantra: 'Yellow square of earth', deity: 'Brahmā, with the śakti Ḍākinī',
+    textCol: 'Red petals around a yellow square', textSw: ['k1', 'k1y'],
+    modern: 'Red', theme: 'Survival, safety, grounding', themeShort: 'Survival, grounding',
+    ascent: 'Kuṇḍalinī sleeps here, coiled three and a half times around the self-born (svayambhū) liṅga, her mouth closing the entrance to Suṣumṇā. Waking, she pierces the Brahma granthi and absorbs earth into herself.' },
+  { dev: 'स्वाधिष्ठान', iast: 'Svādhiṣṭhāna', en: 'Sacral', enFull: 'Sacral chakra', short: 'One’s own seat',
+    parts: 'sva, “one’s own” + adhiṣṭhāna, “seat, abode”', loc: 'Root of the genitals', locShort: 'Root of the genitals',
+    el: { dev: 'जल', iast: 'jala', en: 'water' }, sense: 'taste',
+    bija: 'वं', bijaI: 'vaṃ', petals: 6, letters: ['बं', 'भं', 'मं', 'यं', 'रं', 'लं'],
+    yantra: 'White crescent moon of water', deity: 'Viṣṇu, with the śakti Rākiṇī',
+    textCol: 'Vermilion petals, a white crescent', textSw: ['k2', 'k2y'],
+    modern: 'Orange', theme: 'Pleasure, desire, creativity', themeShort: 'Pleasure, creativity',
+    ascent: 'The earth she carries dissolves into water.' },
+  { dev: 'मणिपूर', iast: 'Maṇipūra', en: 'Solar plexus', enFull: 'Solar plexus chakra', short: 'City of jewels',
+    parts: 'maṇi, “jewel” + pūra, “city”', loc: 'Navel', locShort: 'Navel',
+    el: { dev: 'अग्नि', iast: 'agni', en: 'fire' }, sense: 'sight',
+    bija: 'रं', bijaI: 'raṃ', petals: 10, letters: ['डं', 'ढं', 'णं', 'तं', 'थं', 'दं', 'धं', 'नं', 'पं', 'फं'],
+    yantra: 'Red downward triangle of fire', deity: 'Rudra, with the śakti Lākinī',
+    textCol: 'Petals the color of heavy rain clouds; the triangle red like the rising sun', textSw: ['k3', 'k3y'],
+    modern: 'Yellow', theme: 'Will, power, digestion', themeShort: 'Will, power',
+    ascent: 'Water dissolves into fire.' },
+  { dev: 'अनाहत', iast: 'Anāhata', en: 'Heart', enFull: 'Heart chakra', short: 'Unstruck',
+    parts: 'an, “not” + āhata, “struck”: sound made without striking', loc: 'Heart, center of the chest', locShort: 'Heart',
+    el: { dev: 'वायु', iast: 'vāyu', en: 'air' }, sense: 'touch',
+    bija: 'यं', bijaI: 'yaṃ', petals: 12, letters: ['कं', 'खं', 'गं', 'घं', 'ङं', 'चं', 'छं', 'जं', 'झं', 'ञं', 'टं', 'ठं'],
+    yantra: 'Smoke-colored six-pointed star of two triangles', deity: 'Īśa, with the śakti Kākinī',
+    textCol: 'Petals red like the bandhūka flower; a smoky star', textSw: ['k4', 'k4y'],
+    modern: 'Green', theme: 'Love, compassion, balance', themeShort: 'Love, compassion',
+    ascent: 'Fire dissolves into air. The “unstruck” inner sound (anāhata nāda) is said to be heard here. The Viṣṇu granthi is usually placed just above.' },
+  { dev: 'विशुद्ध', iast: 'Viśuddha', en: 'Throat', enFull: 'Throat chakra', short: 'Especially pure',
+    parts: 'vi (intensifier) + śuddha, “pure”', loc: 'Throat', locShort: 'Throat',
+    el: { dev: 'आकाश', iast: 'ākāśa', en: 'ether, or space' }, sense: 'hearing',
+    bija: 'हं', bijaI: 'haṃ', petals: 16, letters: ['अं', 'आं', 'इं', 'ईं', 'उं', 'ऊं', 'ऋं', 'ॠं', 'ऌं', 'ॡं', 'एं', 'ऐं', 'ओं', 'औं', 'अं', 'अः'],
+    yantra: 'White full-moon circle of ether', deity: 'Sadāśiva, half male and half female, with the śakti Śākinī',
+    textCol: 'Smoky purple petals, a white circle', textSw: ['k5', 'k5y'],
+    modern: 'Blue', theme: 'Expression, communication', themeShort: 'Expression, voice',
+    ascent: 'Air dissolves into ether, the subtlest of the five elements.' },
+  { dev: 'आज्ञा', iast: 'Ājñā', en: 'Third eye', enFull: 'Third eye (brow) chakra', short: 'Command',
+    parts: 'ā-jñā, “to perceive, to command”: the guru’s command is received here', loc: 'Between the eyebrows', locShort: 'Between the brows',
+    el: { dev: 'मनस्', iast: 'manas', en: 'mind' }, sense: 'mind, beyond the five elements',
+    bija: 'ॐ', bijaI: 'oṃ', petals: 2, letters: ['हं', 'क्षं'],
+    yantra: 'Downward triangle holding the itara (“other”) liṅga', deity: 'Śambhu (Śiva), with the śakti Hākinī',
+    textCol: 'White like the moon', textSw: ['k6'],
+    modern: 'Indigo', theme: 'Insight, intuition', themeShort: 'Insight, intuition',
+    ascent: 'Ether dissolves into mind. Iḍā, Piṅgalā and Suṣumṇā meet here, at the Triveṇī. Leaving, she pierces the Rudra granthi.' },
+  { dev: 'सहस्रार', iast: 'Sahasrāra', en: 'Crown', enFull: 'Crown chakra', short: 'Thousand-spoked',
+    parts: 'sahasra, “thousand” + āra, “spoke”', loc: 'Crown of the head, above the six lotuses', locShort: 'Crown of the head',
+    el: null, sense: '',
+    bija: '', bijaI: '', petals: 1000, letters: [],
+    yantra: 'Full moon holding a triangle and the point (bindu)', deity: 'Paramaśiva, joined with Śakti',
+    textCol: 'Whiter than the full moon, its filaments the color of the young sun, its head turned downward', textSw: ['k7', 'k7y'],
+    modern: 'Violet or white', theme: 'Unity, transcendence', themeShort: 'Unity, transcendence',
+    ascent: 'Mind dissolves and Kuṇḍalinī unites with Śiva: the goal of the practice. She then returns down the channel, and nectar (amṛta) flows from here. The 1577 text counts six cakras; this lotus is described apart from them.' },
+];
+
+const CONCEPTS = {
+  kundalini: { kind: 'The power', dev: 'कुण्डलिनी', iast: 'Kuṇḍalinī', en: '“The coiled one,” from kuṇḍala, a coil or ring',
+    desc: 'Śakti, the Goddess as the power behind body and mind, pictured as a serpent asleep at the base of the spine. Kuṇḍalinī yoga aims to wake her and lead her up the central channel to Śiva at the crown.',
+    facts: [['Rests', 'In Mūlādhāra, coiled three and a half times around the self-born liṅga'], ['Travels', 'Up the Brahma nāḍī, the innermost thread of Suṣumṇā'], ['Goal', 'Union with Śiva in Sahasrāra'], ['Methods', 'Breath retention, bandhas (locks), mudrās, mantra and concentration']],
+    art: 'coil' },
+  susumna: { kind: 'Central channel', dev: 'सुषुम्णा', iast: 'Suṣumṇā', en: '“Most gracious”',
+    desc: 'Runs along the spinal axis from the root to the crown. Nested inside it are finer threads, Vajriṇī and Citriṇī, and innermost the Brahma nāḍī that Kuṇḍalinī travels. It stays closed while breath moves through Iḍā and Piṅgalā.',
+    facts: [['Runs', 'Mūlādhāra to Sahasrāra'], ['River', 'Sarasvatī'], ['Quality', 'Neither lunar nor solar']], art: 'map' },
+  ida: { kind: 'Side channel', dev: 'इडा', iast: 'Iḍā', en: 'The left, lunar channel',
+    desc: 'Starts on the left and ends at the left nostril. Cooling and lunar. The Haṭha Yoga Pradīpikā equates it with the river Gaṅgā.',
+    facts: [['Side', 'Left'], ['Quality', 'Lunar, cooling'], ['River', 'Gaṅgā']],
+    note: 'Drawn here braiding across each lotus, as most modern diagrams show it. Older texts mainly place Iḍā and Piṅgalā to the left and right of the central channel.', art: 'map' },
+  pingala: { kind: 'Side channel', dev: 'पिङ्गला', iast: 'Piṅgalā', en: 'The right, solar channel, “tawny”',
+    desc: 'Starts on the right and ends at the right nostril. Heating and solar, paired with the river Yamunā.',
+    facts: [['Side', 'Right'], ['Quality', 'Solar, heating'], ['River', 'Yamunā']],
+    note: 'Drawn here braiding across each lotus, as most modern diagrams show it. Older texts mainly place Iḍā and Piṅgalā to the left and right of the central channel.', art: 'map' },
+  brahma: { kind: 'Knot 1 of 3', dev: 'ब्रह्मग्रन्थि', iast: 'Brahma granthi', en: 'Knot of Brahmā',
+    desc: 'The first block Kuṇḍalinī must pierce. Modern teachers read it as attachment to the body, survival and the senses.',
+    facts: [['Placed', 'Near Mūlādhāra in most modern accounts'], ['Older view', 'The Haṭha Yoga Pradīpikā links it to the heart']], art: 'map' },
+  vishnu: { kind: 'Knot 2 of 3', dev: 'विष्णुग्रन्थि', iast: 'Viṣṇu granthi', en: 'Knot of Viṣṇu',
+    desc: 'The second block, read as emotional attachment and the pull of relationships.',
+    facts: [['Placed', 'At Anāhata in most modern accounts'], ['Older view', 'The Haṭha Yoga Pradīpikā puts it at the throat']], art: 'map' },
+  rudra: { kind: 'Knot 3 of 3', dev: 'रुद्रग्रन्थि', iast: 'Rudra granthi', en: 'Knot of Rudra (Śiva)',
+    desc: 'The last block, read as attachment to the individual self and to psychic powers (siddhis).',
+    facts: [['Placed', 'At Ājñā, between the brows'], ['Older view', 'The Haṭha Yoga Pradīpikā agrees']], art: 'map' },
+};
+
+const STAGES = [
+  { where: 'Mūlādhāra', title: 'Asleep at the root', text: 'Kuṇḍalinī lies coiled three and a half times around the self-born liṅga in Mūlādhāra, her mouth closing the entrance to Suṣumṇā. Breath and prāṇa move only through Iḍā and Piṅgalā.', sel: { kind: 'concept', id: 'kundalini' } },
+  { where: 'Mūlādhāra', title: 'Waking', text: 'Practice heats and stirs her: breath retention, the bandhas (locks), mudrās and mantra. She enters the central channel, pierces the Brahma granthi and absorbs earth into herself. Iḍā and Piṅgalā fall quiet.', sel: { kind: 'chakra', id: 0 } },
+  { where: 'Svādhiṣṭhāna', title: 'Earth into water', text: 'At Svādhiṣṭhāna the earth she carries dissolves into water.', sel: { kind: 'chakra', id: 1 } },
+  { where: 'Maṇipūra', title: 'Water into fire', text: 'At Maṇipūra, the navel, water dissolves into fire.', sel: { kind: 'chakra', id: 2 } },
+  { where: 'Anāhata', title: 'Fire into air', text: 'At Anāhata, the heart, fire dissolves into air. This is where the “unstruck” inner sound is said to be heard.', sel: { kind: 'chakra', id: 3 } },
+  { where: 'Viśuddha', title: 'Air into ether', text: 'Leaving the heart she pierces the Viṣṇu granthi. At Viśuddha, the throat, air dissolves into ether, the subtlest element.', sel: { kind: 'chakra', id: 4 } },
+  { where: 'Ājñā', title: 'Ether into mind', text: 'Between the brows, ether dissolves into mind. Iḍā, Piṅgalā and Suṣumṇā meet here, at the Triveṇī or “triple braid.”', sel: { kind: 'chakra', id: 5 } },
+  { where: 'Sahasrāra', title: 'Union at the crown', text: 'She pierces the Rudra granthi and enters the thousand-petaled lotus. Mind dissolves, and Śakti unites with Śiva. The texts call this samādhi.', sel: { kind: 'chakra', id: 6 } },
+  { where: 'Back to Mūlādhāra', title: 'Return', text: 'She descends the same way, re-creating each element in turn and bathing the lotuses in nectar (amṛta), then coils again at the root. Practice repeats the cycle until the union holds.', sel: { kind: 'concept', id: 'kundalini' } },
+];
+const MAP_NARR = { k: 'Map view', t: 'Seven lotuses on one channel', x: 'All seven lotuses at full color. Kuṇḍalinī sleeps coiled at the root while prāṇa moves through Iḍā and Piṅgalā. Press Awaken to follow her up the central channel.' };
+
+const ELEMENTS = [['पृथ्वी', 'Earth'], ['जल', 'Water'], ['अग्नि', 'Fire'], ['वायु', 'Air'], ['आकाश', 'Ether'], ['मनस्', 'Mind'], ['शिव', 'Śiva']];
+
+const TERMS = [
+  ['कुण्डलिनी', 'Kuṇḍalinī', '“the coiled one”', 'The latent power of the Goddess (Śakti), pictured as a serpent asleep at the base of the spine.'],
+  ['चक्र', 'cakra', '“wheel”', 'A center on the central channel. The source text more often says padma.'],
+  ['पद्म', 'padma', '“lotus”', 'The usual word for a center in the source text, which is why each is drawn as a flower.'],
+  ['नाडी', 'nāḍī', '“channel, stream”', 'A path of prāṇa through the subtle body. Haṭha texts count 72,000.'],
+  ['सुषुम्णा', 'Suṣumṇā', '“most gracious”', 'The central channel, from the root to the crown. Linked with the river Sarasvatī.'],
+  ['इडा', 'Iḍā', 'the lunar channel', 'Left side, cooling, ending at the left nostril. Linked with the Gaṅgā.'],
+  ['पिङ्गला', 'Piṅgalā', '“tawny”', 'Right side, heating and solar, ending at the right nostril. Linked with the Yamunā.'],
+  ['ग्रन्थि', 'granthi', '“knot”', 'Three blocks on the central channel, named for Brahmā, Viṣṇu and Rudra.'],
+  ['बीज', 'bīja', '“seed”', 'The one-syllable mantra at the heart of each lotus: laṃ, vaṃ, raṃ, yaṃ, haṃ, oṃ.'],
+  ['यन्त्र', 'yantra', '“instrument”', 'The geometric figure inside each lotus: square, crescent, triangle, star, circle.'],
+  ['तत्त्व', 'tattva', '“thatness,” a principle', 'Here, the elements: earth, water, fire, air and ether, with mind above them.'],
+  ['लय', 'laya', '“dissolution”', 'Absorbing each element into the next, subtler one as Kuṇḍalinī rises.'],
+  ['प्राण', 'prāṇa', '“breath, life”', 'The vital current that moves through the nāḍīs.'],
+  ['त्रिवेणी', 'Triveṇī', '“triple braid”', 'Where the three channels meet between the brows, named after the river confluence at Prayāga.'],
+  ['अमृत', 'amṛta', '“deathless”', 'The nectar said to flow down from the crown when Śakti and Śiva unite.'],
+  ['षट्चक्रनिरूपण', 'Ṣaṭ-cakra-nirūpaṇa', '“explanation of the six centers”', 'Pūrṇānanda’s text of 1577, which this map follows.'],
+];
+
+const LENS_NOTE = {
+  meaning: 'The literal sense of each Sanskrit name.',
+  element: 'Element and sense organ. As Kuṇḍalinī rises, each element dissolves into the next.',
+  petals: 'The six lower lotuses have 4 + 6 + 10 + 12 + 16 + 2 = 50 petals, one for each letter of the Sanskrit alphabet. The crown repeats all 50 twenty times.',
+  modern: 'Western associations from the 20th century. They are not in the Sanskrit sources.',
+};
+const COL_NOTE = {
+  modern: 'Red to violet, a 20th-century Western convention.',
+  classical: 'Petal and yantra colors as the 1577 text describes them.',
+};
+
+const IC = {
+  play: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>',
+  pause: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19h4V5H6zm8-14v14h4V5z"/></svg>',
+  replay: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5V1L7 6l5 5V7c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z"/></svg>',
+};
+
+/* ---------- state ---------- */
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const state = { mode: 'map', stage: -1, d: 0, m: 0, playing: false, sel: { kind: 'chakra', id: 0 }, lens: 'meaning' };
+const $ = (id) => document.getElementById(id);
+const app = document.querySelector('.app');
+const viz = $('viz'), details = $('details');
+const btnPlay = $('btn-play'), btnPrev = $('btn-prev'), btnNext = $('btn-next'), btnMap = $('btn-map');
+let G = null, E = null, dwellTimer = null;
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const f1 = (v) => (+v).toFixed(1), f2 = (v) => (+v).toFixed(2);
+const ease = (t) => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+/* ---------- geometry ---------- */
+function geometry(compact) {
+  const g = compact ? {
+    W: 380, H: 800, cx: 190, ys: [724, 622, 520, 418, 316, 212, 94], R: [34, 34, 35, 36, 36, 44, 50], r0: [17, 17, 17, 17, 17, 14, 16],
+    gap: 14, A: 38, wingW: 16, fs: { dev: 19, iast: 13.5, en: 15, sec: 12, tag: 11.5 }, coil: { rx: 18, ry: 5.2, h: 26, top: 16 }, head: [12, 2.8],
+  } : {
+    W: 560, H: 910, cx: 280, ys: [830, 712, 594, 476, 358, 244, 108], R: [44, 44, 45, 46, 46, 56, 62], r0: [22, 22, 22, 22, 22, 18, 20],
+    gap: 24, A: 50, wingW: 20, fs: { dev: 22, iast: 15, en: 17, sec: 13.5, tag: 12.5 }, coil: { rx: 24, ry: 7, h: 34, top: 20 }, head: [15, 3.4],
+  };
+  g.compact = compact;
+  const { cx, ys, R, coil } = g;
+  g.yBase = ys[0] + coil.top;
+  const pts = [], N = 240, T = 3.5;
+  for (let k = 0; k <= N; k++) {
+    const u = k / N, th = -Math.PI / 2 - 2 * Math.PI * T * (1 - u);
+    pts.push([cx + coil.rx * Math.cos(th), g.yBase + coil.ry + coil.h * (1 - u) + coil.ry * Math.sin(th)]);
+  }
+  const coilEnd = pts.length - 1;
+  const P0 = [cx, g.yBase], C = [cx + coil.rx * .5, g.yBase - 3], P1 = [cx, g.yBase - 14];
+  for (let k = 1; k <= 16; k++) {
+    const t = k / 16, a = (1 - t) * (1 - t), b = 2 * (1 - t) * t, c = t * t;
+    pts.push([a * P0[0] + b * C[0] + c * P1[0], a * P0[1] + b * C[1] + c * P1[1]]);
+  }
+  const cum = [0];
+  for (let k = 1; k < pts.length; k++) cum.push(cum[k - 1] + Math.hypot(pts[k][0] - pts[k - 1][0], pts[k][1] - pts[k - 1][1]));
+  g.pts = pts; g.cum = cum; g.d0 = cum[coilEnd]; g.dNeck = cum[cum.length - 1]; g.yNeck = P1[1];
+  g.total = g.dNeck + (g.yNeck - ys[6]);
+  g.serpD = 'M' + pts.map((p) => f2(p[0]) + ',' + f2(p[1])).join('L') + 'L' + cx + ',' + ys[6];
+  g.knots = [(ys[0] - R[0] + ys[1] + R[1]) / 2, (ys[3] - R[3] + ys[4] + R[4]) / 2, (ys[5] - g.wingW - 4 + ys[6] + R[6]) / 2];
+  const dFor = (y) => (y >= g.yNeck ? g.d0 : g.dNeck + (g.yNeck - y));
+  g.stageD = [g.d0, dFor(g.knots[0] - 12), dFor(ys[1]), dFor(ys[2]), dFor(ys[3]), dFor(ys[4]), dFor(ys[5]), dFor(ys[6]), g.d0];
+  g.idaD = nadiD(g, -1);
+  g.pinD = nadiD(g, 1);
+  return g;
+}
+function nadiD(g, side0) {
+  const { cx, ys, A } = g, K = A / .75;
+  let d = `M${cx},${ys[0]}`;
+  for (let j = 0; j < 5; j++) {
+    const s = j % 2 === 0 ? side0 : -side0, y0 = ys[j], y1 = ys[j + 1], h = y0 - y1;
+    d += `C${f1(cx + s * K)},${f1(y0 - .1 * h)} ${f1(cx + s * K)},${f1(y1 + .1 * h)} ${cx},${y1}`;
+  }
+  return d;
+}
+function headAt(d) {
+  if (d >= G.dNeck) return [G.cx, G.yNeck - (d - G.dNeck)];
+  const cum = G.cum;
+  let lo = 0, hi = cum.length - 1;
+  while (hi - lo > 1) { const mid = (lo + hi) >> 1; if (cum[mid] <= d) lo = mid; else hi = mid; }
+  const t = (d - cum[lo]) / ((cum[hi] - cum[lo]) || 1), a = G.pts[lo], b = G.pts[hi];
+  return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+}
+function act(i, hy) {
+  const y = G.ys[i], y0 = y + G.R[i] * .85, y1 = y - 2;
+  return clamp((y0 - hy) / (y0 - y1), 0, 1);
+}
+
+/* ---------- lotus drawing ---------- */
+function rot(pts, a) {
+  const c = Math.cos(a), s = Math.sin(a);
+  return pts.map(([x, y]) => f2(x * c - y * s) + ',' + f2(x * s + y * c));
+}
+function petalD(n, rb, R, w, start, off = 0) {
+  const L = R - rb, base = [[rb, 0], [rb + .18 * L, w], [R - .32 * L, .62 * w], [R, 0], [R - .32 * L, -.62 * w], [rb + .18 * L, -w]];
+  let d = '';
+  for (let k = 0; k < n; k++) {
+    const P = rot(base, (start + (k + off) * 360 / n) * Math.PI / 180);
+    d += `M${P[0]}C${P[1]} ${P[2]} ${P[3]}C${P[4]} ${P[5]} ${P[0]}Z`;
+  }
+  return d;
+}
+function veinD(n, rb, R, start) {
+  const L = R - rb;
+  let d = '';
+  for (let k = 0; k < n; k++) {
+    const P = rot([[rb + .14 * L, 0], [R - .22 * L, 0]], (start + k * 360 / n) * Math.PI / 180);
+    d += `M${P[0]}L${P[1]}`;
+  }
+  return d;
+}
+function triD(r, down) {
+  const a = .866 * r, h = .5 * r;
+  return down ? `M0,${f1(r)}L${f1(-a)},${f1(-h)}L${f1(a)},${f1(-h)}Z` : `M0,${f1(-r)}L${f1(a)},${f1(h)}L${f1(-a)},${f1(h)}Z`;
+}
+function yantraSVG(i, r0) {
+  switch (i) {
+    case 0: { const s = r0 * 1.3; return `<rect class="yan" x="${f1(-s / 2)}" y="${f1(-s / 2)}" width="${f1(s)}" height="${f1(s)}"/>`; }
+    case 1: return `<circle class="yan" cy="${f1(r0 * .1)}" r="${f1(r0 * .8)}"/><circle class="peri-in" cy="${f1(-r0 * .13)}" r="${f1(r0 * .72)}"/>`;
+    case 2: return `<path class="yan" d="${triD(r0 * .96, true)}"/>`;
+    case 3: return `<path class="yan" d="${triD(r0 * .96, true)}${triD(r0 * .96, false)}"/>`;
+    case 4: return `<circle class="yan" r="${f1(r0 * .74)}"/>`;
+    case 5: return `<path class="yan" d="${triD(r0 * .98, true)}"/>`;
+  }
+  return '';
+}
+const BIJA_FS = [.95, .86, .72, .74, .9, .9], BIJA_DY = [.03, -.06, -.16, .02, .03, -.12];
+function lotusInner(i, R, r0, o = {}) {
+  let s = '';
+  if (i === 6) {
+    const rings = o.plate ? 6 : 3, step = o.plate ? .1 : .16, rb = r0 * .92;
+    for (let k = 0; k < rings; k++) {
+      const Rk = R * (1 - k * step), w = Math.PI * (rb + Rk) / 2 / 50 * 1.4;
+      s += `<path class="petals" opacity="${f2(.5 + .5 * k / (rings - 1))}" d="${petalD(50, rb, Rk, w, -90, k % 2 ? .5 : 0)}"/>`;
+    }
+    s += `<circle class="yan" r="${f1(r0 * 1.02)}"/><circle class="moon" r="${f1(r0 * .68)}"/><path class="tri-ink" d="${triD(r0 * .4, true)}"/><circle class="bindu" r="${f2(Math.max(1.1, r0 * .07))}"/>`;
+    return s;
+  }
+  const c = CH[i], n = c.petals, rb = r0 - 1.5, start = i === 5 ? 180 : -90;
+  const w = i === 5 ? o.wingW : Math.min(Math.PI * (rb + R) / 2 / n * 1.05, .85 * (R - rb));
+  s += `<path class="petals" d="${petalD(n, rb, R, w, start)}"/><path class="veins" d="${veinD(n, rb, R, start)}"/>`;
+  s += `<circle class="peri" r="${r0}"/>` + yantraSVG(i, r0);
+  s += `<text class="bija" lang="sa" x="0" y="${f1(BIJA_DY[i] * r0)}" font-size="${f1(BIJA_FS[i] * r0)}" text-anchor="middle" dominant-baseline="central">${c.bija}</text>`;
+  if (o.plate) {
+    const L = R - rb, fz = Math.min(w * .9, L * .34, 22), rl = rb + (i === 5 ? .52 : .57) * L;
+    c.letters.forEach((ch, k) => {
+      const a = (start + k * 360 / n) * Math.PI / 180;
+      s += `<text class="pl-letter" lang="sa" x="${f1(rl * Math.cos(a))}" y="${f1(rl * Math.sin(a))}" font-size="${f1(fz)}" text-anchor="middle" dominant-baseline="central">${ch}</text>`;
+    });
+  }
+  return s;
+}
+const cvars = (i) => `--p:var(--p${i + 1});--y:var(--y${i + 1});--b:var(--b${i + 1})`;
+
+/* ---------- labels ---------- */
+function secText(i) {
+  const c = CH[i];
+  switch (state.lens) {
+    case 'element': return c.el ? `${c.el.dev} ${cap(c.el.en.split(',')[0])}${i < 5 ? ' · ' + c.sense : ''}` : 'Beyond the elements';
+    case 'petals': return i === 6 ? '1,000 petals' : `${c.petals} petals · seed ${c.bija}`;
+    case 'modern': return c.themeShort;
+    default: return c.short;
+  }
+}
+const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+
+/* ---------- build the diagram ---------- */
+function buildSVG() {
+  const compact = (viz.clientWidth || window.innerWidth) < 500;
+  G = geometry(compact);
+  const { W, H, cx, ys, R, r0, fs, A } = G;
+  let s = `<svg class="diagram" viewBox="0 0 ${W} ${H}" role="group" aria-label="The seven chakras on the central channel, with Iḍā, Piṅgalā and the three knots">`;
+  s += '<defs>';
+  for (let i = 0; i < 7; i++) s += `<radialGradient id="hg${i}"><stop offset="0" style="stop-color:var(--p${i + 1});stop-opacity:.75"/><stop offset=".45" style="stop-color:var(--p${i + 1});stop-opacity:.24"/><stop offset="1" style="stop-color:var(--p${i + 1});stop-opacity:0"/></radialGradient>`;
+  s += '<radialGradient id="hglow"><stop offset="0" style="stop-color:var(--gold-hi);stop-opacity:1"/><stop offset=".38" style="stop-color:var(--gold);stop-opacity:.55"/><stop offset="1" style="stop-color:var(--gold);stop-opacity:0"/></radialGradient>';
+  s += '<radialGradient id="aura" cx="50%" cy="50%" r="50%"><stop offset="0" style="stop-color:var(--aura-c);stop-opacity:.3"/><stop offset="1" style="stop-color:var(--aura-c);stop-opacity:0"/></radialGradient>';
+  s += `<clipPath id="coilclip"><rect x="0" y="${f1(G.yBase - (compact ? 7 : 9))}" width="${W}" height="${H}"/></clipPath>`;
+  s += '</defs>';
+  s += `<ellipse cx="${cx}" cy="${f1(H * .5)}" rx="${f1(W * .52)}" ry="${f1(H * .5)}" fill="url(#aura)"/>`;
+
+  s += '<g class="halos">' + ys.map((y, i) => `<circle class="halo" cx="${cx}" cy="${y}" r="${f1(i === 5 ? R[i] * .95 : R[i] * 1.75)}" fill="url(#hg${i})"/>`).join('') + '</g>';
+  let rays = '';
+  const rayL = compact ? [8, 12] : [12, 18];
+  for (let k = 0; k < 40; k++) {
+    const a = k * 9 * Math.PI / 180, r1 = R[6] + 5, r2 = R[6] + rayL[k % 2 ? 0 : 1];
+    rays += `<line x1="${f1(cx + r1 * Math.cos(a))}" y1="${f1(ys[6] + r1 * Math.sin(a))}" x2="${f1(cx + r2 * Math.cos(a))}" y2="${f1(ys[6] + r2 * Math.sin(a))}"/>`;
+  }
+  s += `<g class="rays" opacity="0">${rays}</g>`;
+
+  s += `<g class="chan" data-cv="susumna"><line class="chan-outer" x1="${cx}" y1="${G.yBase}" x2="${cx}" y2="${ys[6]}"/><line class="chan-inner" x1="${cx}" y1="${G.yBase}" x2="${cx}" y2="${ys[6]}"/><line class="hit-line" data-concept="susumna" x1="${cx}" y1="${G.yBase}" x2="${cx}" y2="${ys[6]}"/></g>`;
+
+  s += `<g class="nadi-layer"><path class="nadi ida" data-cv="ida" d="${G.idaD}"/><path class="flow" d="${G.idaD}"/><path class="nadi pingala" data-cv="pingala" d="${G.pinD}"/><path class="flow" d="${G.pinD}"/><path class="hit-line" data-concept="ida" d="${G.idaD}"/><path class="hit-line" data-concept="pingala" d="${G.pinD}"/></g>`;
+
+  const tl = `M${cx},${G.yBase}L${cx},${ys[6]}`;
+  s += `<g class="trail" opacity="0"><path class="trail-glow" d="${tl}"/><path class="trail-core" d="${tl}"/></g>`;
+  const headSVG = `<g class="head"><circle r="${G.head[0]}" fill="url(#hglow)"/><circle class="head-core" r="${G.head[1]}"/></g>`;
+  s += `<g class="serpent-under"><path class="body-glow" d="${G.serpD}"/><path class="body" d="${G.serpD}"/>${headSVG}</g>`;
+
+  // lotuses with labels
+  for (let i = 0; i < 7; i++) {
+    const c = CH[i], y = ys[i], ext = R[i] + G.gap, hh = i === 5 ? (compact ? 26 : 30) : Math.min(R[i] * .86, compact ? 44 : 54);
+    const lx = cx - ext, rx = cx + ext, ring = i === 5 ? r0[i] + 10 : R[i] + 6;
+    s += `<g class="ck" data-i="${i}" tabindex="0" role="button" aria-label="${c.iast}, ${c.enFull}">`;
+    s += `<rect class="hit" x="0" y="${f1(y - hh)}" width="${W}" height="${f1(hh * 2)}"/>`;
+    s += `<circle class="focus-ring" cx="${cx}" cy="${y}" r="${ring}"/>`;
+    s += `<g class="lotus" transform="translate(${cx},${y})"><g class="bloom" style="${cvars(i)}">${lotusInner(i, R[i], r0[i], { wingW: G.wingW })}</g></g>`;
+    s += `<text class="lab-dev" lang="sa" x="${lx}" y="${y - 2}" font-size="${fs.dev}" text-anchor="end">${c.dev}</text>`;
+    s += `<text class="lab-iast" lang="sa-Latn" x="${lx}" y="${f1(y + fs.iast + 3)}" font-size="${fs.iast}" text-anchor="end">${c.iast}</text>`;
+    s += `<text class="lab-en" x="${rx}" y="${y - 2}" font-size="${fs.en}">${c.en}</text>`;
+    s += `<text class="lab-sec" x="${rx}" y="${f1(y + fs.sec + 4)}" font-size="${fs.sec}">${secText(i)}</text>`;
+    s += '</g>';
+  }
+
+  // knots
+  const KN = [['brahma', 'Brahma granthi'], ['vishnu', 'Viṣṇu granthi'], ['rudra', 'Rudra granthi']];
+  s += '<g class="knot-layer">';
+  G.knots.forEach((y, k) => {
+    const kw = compact ? 9 : 11;
+    s += `<g class="knot" data-concept="${KN[k][0]}" data-cv="${KN[k][0]}" tabindex="0" role="button" aria-label="${KN[k][1]}">`;
+    s += `<rect class="hit" x="${f1(cx - 18)}" y="${f1(y - 13)}" width="${f1(A + 120)}" height="26"/>`;
+    s += `<line class="knot-lead" x1="${cx + 14}" y1="${f1(y)}" x2="${cx + A + 7}" y2="${f1(y)}"/>`;
+    s += `<g class="knot-shape" transform="translate(${cx},${f1(y)})"><rect class="knot-band" x="${-kw}" y="-9" width="${kw * 2}" height="18" rx="4"/>`;
+    for (const dy of [-5, 0, 5]) s += `<ellipse class="knot-cord" cy="${dy}" rx="${kw}" ry="${compact ? 3 : 3.6}"/>`;
+    s += '</g>';
+    s += `<text class="knot-lab" lang="sa-Latn" x="${cx + A + 11}" y="${f1(y + 4)}" font-size="${fs.tag}">${KN[k][1]}</text></g>`;
+  });
+  s += '</g>';
+
+  // kundalini coil over the root lotus
+  const lingaH = G.coil.h + 2 * G.coil.ry + 6;
+  s += `<g class="serpent-over rest" data-concept="kundalini" data-cv="kundalini" tabindex="0" role="button" aria-label="Kuṇḍalinī, coiled at the root"><g clip-path="url(#coilclip)">`;
+  s += `<rect class="linga" x="${f1(cx - 4.5)}" y="${f1(G.yBase - 4)}" width="9" height="${f1(lingaH)}" rx="4.5"/>`;
+  s += `<path class="body-glow" d="${G.serpD}"/><path class="body" d="${G.serpD}"/>${headSVG}</g>`;
+  s += `<ellipse class="hit" cx="${cx}" cy="${f1(G.yBase + G.coil.h / 2 + G.coil.ry)}" rx="${G.coil.rx + 8}" ry="${f1(G.coil.h / 2 + G.coil.ry + 6)}"/></g>`;
+
+  // channel labels, Triveni, nectar, selection ring
+  const midY = (ys[2] + ys[3]) / 2;
+  s += `<g class="nadi-layer"><text class="n-lab ida" data-concept="ida" data-cv="ida" x="${cx - A - 8}" y="${f1(midY + 4)}" font-size="${fs.tag + 1}" text-anchor="end"><tspan lang="sa">इडा</tspan> Iḍā</text>`;
+  s += `<text class="n-lab pingala" data-concept="pingala" data-cv="pingala" x="${cx + A + 8}" y="${f1(midY + 4)}" font-size="${fs.tag + 1}"><tspan lang="sa">पिङ्गला</tspan> Piṅgalā</text></g>`;
+  s += `<text class="n-lab sus" data-concept="susumna" data-cv="susumna" x="${cx - 14}" y="${f1(G.knots[2] + 4)}" font-size="${fs.tag + 1}" text-anchor="end"><tspan lang="sa">सुषुम्णा</tspan> Suṣumṇā</text>`;
+  s += `<circle class="triveni" cx="${cx}" cy="${ys[5]}" r="${r0[5] + 7}"/>`;
+  s += '<g class="nectar">' + Array.from({ length: 6 }, () => `<circle r="${compact ? 1.8 : 2.2}" cx="${cx}" cy="0" opacity="0"/>`).join('') + '</g>';
+  s += `<circle class="sel-ring" cx="${cx}" cy="${ys[0]}" r="10" opacity="0"/>`;
+  s += '</svg>';
+
+  viz.innerHTML = s;
+  const q = (sel) => Array.from(viz.querySelectorAll(sel));
+  E = {
+    svg: viz.querySelector('svg'), ck: q('.ck'), lotus: q('.lotus'), bloom: q('.bloom'), halo: q('.halo'), sec: q('.lab-sec'),
+    rays: viz.querySelector('.rays'), knotShape: q('.knot-shape'), bodies: q('.body, .body-glow'), heads: q('.head'),
+    trails: q('.trail path'), trailG: viz.querySelector('.trail'), flows: q('.flow'), nectar: q('.nectar circle'),
+    over: viz.querySelector('.serpent-over'), triveni: viz.querySelector('.triveni'), ring: viz.querySelector('.sel-ring'),
+  };
+  applyLayers();
+  const pending = anim.tw.get('d');
+  anim.tw.delete('d');
+  state.d = state.mode === 'ascent' ? G.stageD[state.stage] : G.d0;
+  E.triveni.classList.toggle('on', state.mode === 'ascent' && state.stage === 6);
+  markSelection();
+  paint(performance.now());
+  if (pending && pending.done) pending.done();
+}
+
+/* ---------- animation ---------- */
+const anim = { tw: new Map(), raf: 0 };
+function tween(key, to, dur, done) {
+  if (reduced || dur <= 0) { state[key] = to; anim.tw.delete(key); paint(performance.now()); if (done) done(); return; }
+  anim.tw.set(key, { from: state[key], to, dur, t0: performance.now(), done });
+  if (!anim.raf) anim.raf = requestAnimationFrame(loop);
+}
+function loop(now) {
+  anim.raf = 0;
+  const finished = [];
+  for (const [k, t] of anim.tw) {
+    const p = clamp((now - t.t0) / t.dur, 0, 1);
+    state[k] = t.from + (t.to - t.from) * ease(p);
+    if (p >= 1) { anim.tw.delete(k); if (t.done) finished.push(t.done); }
+  }
+  paint(now);
+  finished.forEach((f) => f());
+  if (anim.tw.size && !anim.raf) anim.raf = requestAnimationFrame(loop);
+}
+function paint(now) {
+  if (!G || !E) return;
+  const m = state.m, d = state.d, [hx, hy] = headAt(d);
+  for (let i = 0; i < 7; i++) {
+    const a = act(i, hy), av = 1 + (a - 1) * m, sc = .84 + .16 * av, sy = .62 + .38 * av;
+    E.bloom[i].setAttribute('transform', `scale(${sc.toFixed(3)},${(sc * sy).toFixed(3)})`);
+    E.lotus[i].setAttribute('opacity', (.4 + .6 * av).toFixed(3));
+    E.halo[i].setAttribute('opacity', (.2 * (1 - m) + .95 * a * m).toFixed(3));
+  }
+  E.rays.setAttribute('opacity', (act(6, hy) * m).toFixed(3));
+  G.knots.forEach((y, k) => {
+    const p = clamp((y - hy) / 18, 0, 1) * m;
+    E.knotShape[k].setAttribute('transform', `translate(${G.cx},${f1(y)}) scale(${(1 + 1.1 * p).toFixed(3)},${(1 - .35 * p).toFixed(3)})`);
+    E.knotShape[k].setAttribute('opacity', (1 - .82 * p).toFixed(3));
+  });
+  const dash = `${f2(G.d0)} ${Math.round(G.total * 2)}`, off = f2(-(d - G.d0));
+  E.bodies.forEach((el) => { el.style.strokeDasharray = dash; el.style.strokeDashoffset = off; });
+  const tl = Math.max(0, G.yBase - hy);
+  E.trails.forEach((el) => { el.style.strokeDasharray = `${f2(tl)} ${Math.round(G.total * 2)}`; });
+  E.trailG.setAttribute('opacity', m.toFixed(3));
+  E.heads.forEach((h) => h.setAttribute('transform', `translate(${f2(hx)},${f2(hy)})`));
+  const fo = 1 - m * clamp((d - G.d0) / 30, 0, 1);
+  E.flows.forEach((f) => f.setAttribute('opacity', (.9 * fo).toFixed(3)));
+  const nectarOn = state.mode === 'ascent' && state.stage === 8 && anim.tw.has('d') && hy - G.ys[6] > 40;
+  E.nectar.forEach((c, k) => {
+    if (!nectarOn) { c.setAttribute('opacity', '0'); return; }
+    const span = hy - G.ys[6] - 24, f = ((now / 1000) * .5 + k / 6) % 1;
+    c.setAttribute('cy', f1(G.ys[6] + 12 + f * span));
+    c.setAttribute('opacity', (Math.sin(f * Math.PI) * .95).toFixed(3));
+  });
+  E.over.classList.toggle('rest', Math.abs(d - G.d0) < 1);
+}
+
+/* ---------- stages ---------- */
+function dwellFor(s) { return clamp(STAGES[s].text.length * 30, 2600, 5600); }
+function goStage(s) {
+  clearTimeout(dwellTimer);
+  s = clamp(s, 0, 8);
+  state.stage = s;
+  if (state.mode !== 'ascent') { state.mode = 'ascent'; tween('m', 1, 700); }
+  updateNarration(); updateChips(); syncControls();
+  E.triveni.classList.toggle('on', s === 6);
+  select(STAGES[s].sel, { auto: true });
+  const target = G.stageD[s], dist = Math.abs(target - state.d);
+  const dur = s === 8 && dist > 1 ? 900 + dist * 5.2 : 700 + dist * 7;
+  tween('d', target, dur, () => {
+    if (!state.playing) return;
+    if (s < 7) dwellTimer = setTimeout(() => goStage(s + 1), dwellFor(s));
+    else { state.playing = false; syncControls(); }
+  });
+}
+function toMap() {
+  clearTimeout(dwellTimer);
+  state.playing = false; state.mode = 'map'; state.stage = -1;
+  tween('m', 0, 700); tween('d', G.d0, 700);
+  E.triveni.classList.remove('on');
+  updateNarration(); updateChips(); syncControls();
+}
+btnPlay.addEventListener('click', () => {
+  if (state.playing) { state.playing = false; clearTimeout(dwellTimer); syncControls(); return; }
+  state.playing = true;
+  if (state.mode === 'map') goStage(0);
+  else if (state.stage >= 7) { anim.tw.delete('d'); state.d = G.d0; paint(performance.now()); goStage(0); }
+  else goStage(state.stage + 1);
+  syncControls();
+});
+btnNext.addEventListener('click', () => { state.playing = false; goStage(state.mode === 'map' ? 0 : state.stage + 1); });
+btnPrev.addEventListener('click', () => { state.playing = false; if (state.mode === 'ascent' && state.stage > 0) goStage(state.stage - 1); });
+btnMap.addEventListener('click', toMap);
+
+const rail = $('rail'), stops = [];
+STAGES.forEach((st, k) => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'stop';
+  b.style.setProperty('--c', k === 0 || k === 8 ? 'var(--gold)' : `var(--p${k})`);
+  b.setAttribute('aria-label', `Stage ${k}: ${st.title}`);
+  b.title = `${k}. ${st.title}`;
+  b.innerHTML = '<span></span>';
+  b.addEventListener('click', () => { state.playing = false; goStage(k); });
+  rail.appendChild(b); stops.push(b);
+});
+const chipsEl = $('chips'), chips = [];
+ELEMENTS.forEach(([dv, en], k) => {
+  const c = document.createElement('span');
+  c.className = 'chip'; c.style.setProperty('--c', `var(--p${k + 1})`);
+  c.innerHTML = `<b lang="sa">${dv}</b>${en}`;
+  chipsEl.appendChild(c); chips.push(c);
+});
+function updateChips() {
+  const s = state.mode === 'ascent' ? state.stage : -1;
+  chips.forEach((c, k) => { c.dataset.state = s >= 1 && s <= 7 ? (k < s - 1 ? 'gone' : k === s - 1 ? 'active' : '') : ''; });
+}
+function updateNarration() {
+  if (state.mode !== 'ascent') { $('narr-k').textContent = MAP_NARR.k; $('narr-t').textContent = MAP_NARR.t; $('narr-x').textContent = MAP_NARR.x; return; }
+  const st = STAGES[state.stage];
+  $('narr-k').textContent = `Stage ${state.stage} of 8 · ${st.where}`;
+  $('narr-t').textContent = st.title;
+  $('narr-x').textContent = st.text;
+}
+function syncControls() {
+  const asc = state.mode === 'ascent', s = state.stage;
+  let label = 'Awaken', icon = IC.play;
+  if (state.playing) { label = 'Pause'; icon = IC.pause; }
+  else if (asc && s >= 7) { label = 'Replay'; icon = IC.replay; }
+  else if (asc) { label = 'Resume'; }
+  btnPlay.innerHTML = `${icon}<span>${label}</span>`;
+  btnPrev.disabled = !asc || s <= 0;
+  btnNext.disabled = asc && s >= 8;
+  btnMap.hidden = !asc;
+  btnNext.classList.toggle('hint', asc && s === 7 && !state.playing);
+  stops.forEach((b, k) => {
+    b.classList.toggle('on', asc && k === s);
+    b.classList.toggle('future', asc && k > s);
+    if (asc && k === s) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
+  });
+}
+
+/* ---------- selection and details ---------- */
+function select(sel, o = {}) {
+  state.sel = sel;
+  renderDetails();
+  markSelection();
+  if (o.scroll && window.matchMedia('(max-width: 779px)').matches) details.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+}
+function markSelection() {
+  if (!E) return;
+  const sel = state.sel;
+  E.ck.forEach((g, i) => g.classList.toggle('is-sel', sel.kind === 'chakra' && sel.id === i));
+  viz.querySelectorAll('[data-cv]').forEach((el) => el.classList.toggle('is-sel', sel.kind === 'concept' && el.dataset.cv === sel.id));
+  if (sel.kind === 'chakra') {
+    const i = sel.id;
+    E.ring.setAttribute('cy', G.ys[i]);
+    E.ring.setAttribute('r', i === 5 ? G.r0[5] + 10 : G.R[i] + 7);
+    E.ring.setAttribute('opacity', '1');
+  } else E.ring.setAttribute('opacity', '0');
+  document.querySelectorAll('#ref-body tr').forEach((tr, i) => tr.classList.toggle('is-sel', sel.kind === 'chakra' && sel.id === i));
+}
+const PL = { R: [106, 106, 108, 108, 108, 112, 114], r0: [46, 46, 46, 46, 46, 36, 34], wingW: 42 };
+function renderDetails() {
+  const sel = state.sel;
+  if (sel.kind === 'chakra') {
+    const i = sel.id, c = CH[i];
+    details.style.setProperty('--c', `var(--p${i + 1})`);
+    const petals = i === 6 ? '1,000, in 20 layers, each carrying all 50 letters'
+      : i === 4 ? `16, bearing the sixteen vowels <span class="dv" lang="sa">अं</span> to <span class="dv" lang="sa">अः</span>`
+      : `${c.petals}, bearing <span class="dv" lang="sa">${c.letters.join(' ')}</span>`;
+    const el = c.el ? `<span class="dv" lang="sa">${c.el.dev}</span> ${c.el.iast}, ${c.el.en}${i < 5 ? ' · sense of ' + c.sense : ''}` : 'Beyond the elements';
+    const seed = c.bija ? `<span class="dv" lang="sa">${c.bija}</span> ${c.bijaI}` : 'None in the text';
+    const sw = c.textSw.map((t) => `<span class="sw" style="background:var(--${t})"></span>`).join('');
+    details.innerHTML = `
+      <p class="d-k">Chakra ${i + 1} of 7, counted from the base</p>
+      <h2 class="d-dev" lang="sa">${c.dev}</h2>
+      <p class="d-iast" lang="sa-Latn">${c.iast}</p>
+      <p class="d-en">${c.enFull} <span>· “${c.short}”</span></p>
+      <div class="plate-wrap"><svg class="plate" viewBox="0 0 240 240" role="img" aria-label="${c.iast} lotus, ${i === 6 ? 'a thousand' : c.petals} petals"><g transform="translate(120,120)" style="${cvars(i)}">${lotusInner(i, PL.R[i], PL.r0[i], { plate: true, wingW: PL.wingW })}</g></svg></div>
+      <dl class="facts">
+        <dt>Literally</dt><dd>${c.parts}</dd>
+        <dt>Location</dt><dd>${c.loc}</dd>
+        <dt>Element</dt><dd>${el}</dd>
+        <dt>Seed</dt><dd>${seed}</dd>
+        <dt>Petals</dt><dd>${petals}</dd>
+        <dt>Yantra</dt><dd>${c.yantra}</dd>
+        <dt>Deities</dt><dd>${c.deity}</dd>
+        <dt>In the text</dt><dd>${sw}${c.textCol}</dd>
+        <dt>Modern</dt><dd><span class="sw" style="background:var(--m${i + 1})"></span>${c.modern} · ${c.theme}</dd>
+      </dl>
+      <div class="d-ascent"><h3>In the ascent</h3><p>${c.ascent}</p></div>`;
+  } else {
+    const c = CONCEPTS[sel.id];
+    details.style.setProperty('--c', 'var(--gold)');
+    details.innerHTML = `
+      <p class="d-k">${c.kind}</p>
+      <h2 class="d-dev" lang="sa">${c.dev}</h2>
+      <p class="d-iast" lang="sa-Latn">${c.iast}</p>
+      <p class="d-en">${c.en}</p>
+      ${c.art === 'coil' ? coilArt() : miniMap(sel.id)}
+      <p class="d-desc">${c.desc}</p>
+      <dl class="facts">${c.facts.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
+      ${c.note ? `<p class="d-note">${c.note}</p>` : ''}`;
+  }
+}
+function coilArt() {
+  const cx = 120, base = 52, rx = 56, ry = 14, h = 56, T = 3.5, N = 260, pts = [];
+  for (let k = 0; k <= N; k++) {
+    const u = k / N, th = -Math.PI / 2 - 2 * Math.PI * T * (1 - u);
+    pts.push([cx + rx * Math.cos(th), base + ry + h * (1 - u) + ry * Math.sin(th)]);
+  }
+  for (let k = 1; k <= 12; k++) {
+    const t = k / 12, a = (1 - t) * (1 - t), b = 2 * (1 - t) * t, c = t * t;
+    pts.push([a * cx + b * (cx + 26) + c * cx, a * base + b * (base - 6) + c * (base - 24)]);
+  }
+  const d = 'M' + pts.map((p) => f1(p[0]) + ',' + f1(p[1])).join('L');
+  return `<svg class="art" viewBox="0 0 240 160" role="img" aria-label="Kuṇḍalinī coiled three and a half times around the liṅga"><defs><radialGradient id="kart-glow"><stop offset="0" style="stop-color:var(--gold-hi)"/><stop offset=".4" style="stop-color:var(--gold);stop-opacity:.5"/><stop offset="1" style="stop-color:var(--gold);stop-opacity:0"/></radialGradient></defs><rect class="linga" x="${cx - 9}" y="${base - 14}" width="18" height="${h + 2 * ry + 18}" rx="9"/><path class="body-glow" d="${d}" style="stroke-width:12"/><path class="body" d="${d}" style="stroke-width:4.5"/><circle cx="${cx}" cy="${base - 24}" r="18" fill="url(#kart-glow)"/><circle class="head-core" cx="${cx}" cy="${base - 24}" r="4.5"/></svg>`;
+}
+function miniMap(id) {
+  const xs = Array.from({ length: 7 }, (_, k) => 22 + k * 236 / 6), y = 44;
+  const weave = (side0) => {
+    let d = `M${f1(xs[0])},${y}`;
+    for (let j = 0; j < 5; j++) { const s = j % 2 === 0 ? side0 : -side0; d += `C${f1(xs[j] + 10)},${y + s * 26} ${f1(xs[j + 1] - 10)},${y + s * 26} ${f1(xs[j + 1])},${y}`; }
+    return d;
+  };
+  const on = (k) => (k === id ? ' on' : '');
+  let s = `<svg class="art mini" viewBox="0 0 280 92" role="img" aria-label="Position on the central channel, root at left, crown at right">`;
+  s += `<line class="mm-chan${on('susumna')}" x1="${f1(xs[0])}" y1="${y}" x2="${f1(xs[6])}" y2="${y}"/>`;
+  s += `<path class="mm-ida${on('ida')}" d="${weave(-1)}"/><path class="mm-pin${on('pingala')}" d="${weave(1)}"/>`;
+  xs.forEach((x, k) => { s += `<circle cx="${f1(x)}" cy="${y}" r="6.5" style="fill:var(--p${k + 1})"/>`; });
+  [[0, 1, 'brahma'], [3, 4, 'vishnu'], [5, 6, 'rudra']].forEach(([a, b, key]) => { const x = (xs[a] + xs[b]) / 2; s += `<rect class="mm-knot${on(key)}" x="${f1(x - 4)}" y="${y - 9}" width="8" height="18" rx="2"/>`; });
+  s += `<text class="mm-t" x="${f1(xs[0])}" y="88" text-anchor="middle">root</text><text class="mm-t" x="${f1(xs[6])}" y="88" text-anchor="middle">crown</text></svg>`;
+  return s;
+}
+
+/* ---------- diagram events ---------- */
+function targetOf(e) {
+  const ck = e.target.closest('.ck');
+  if (ck) return { kind: 'chakra', id: +ck.dataset.i };
+  const cn = e.target.closest('[data-concept]');
+  if (cn) return { kind: 'concept', id: cn.dataset.concept };
+  return null;
+}
+viz.addEventListener('click', (e) => { const t = targetOf(e); if (t) select(t, { scroll: true }); });
+viz.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const t = targetOf(e); if (!t) return;
+  e.preventDefault(); select(t, { scroll: true });
+});
+
+/* ---------- view options ---------- */
+function applyLayers() {
+  if (!E) return;
+  E.svg.classList.toggle('hide-nadi', !$('tg-nadi').checked);
+  E.svg.classList.toggle('hide-knot', !$('tg-knot').checked);
+}
+document.querySelectorAll('input[name="lens"]').forEach((r) => r.addEventListener('change', () => {
+  state.lens = r.value; $('lens-note').textContent = LENS_NOTE[state.lens];
+  if (E) E.sec.forEach((t, i) => { t.textContent = secText(i); });
+}));
+document.querySelectorAll('input[name="colors"]').forEach((r) => r.addEventListener('change', () => {
+  app.dataset.colors = r.value; $('col-note').textContent = COL_NOTE[r.value];
+}));
+$('tg-nadi').addEventListener('change', applyLayers);
+$('tg-knot').addEventListener('change', applyLayers);
+$('lens-note').textContent = LENS_NOTE.meaning;
+$('col-note').textContent = COL_NOTE.modern;
+
+/* ---------- reference table and glossary ---------- */
+$('ref-body').innerHTML = CH.map((c, i) => `<tr data-i="${i}" tabindex="0" aria-label="${c.iast}, ${c.enFull}">
+  <td class="t-n"><span class="sw" style="background:var(--p${i + 1})"></span>${i + 1}</td>
+  <td><span class="t-dev" lang="sa">${c.dev}</span><span class="t-iast" lang="sa-Latn">${c.iast}</span></td>
+  <td>${c.short}<span class="t-sub">${c.parts}</span></td>
+  <td>${c.enFull}</td>
+  <td>${c.locShort}</td>
+  <td>${c.el ? `<span class="dv" lang="sa">${c.el.dev}</span> ${c.el.iast}<span class="t-sub">${c.el.en}</span>` : 'Beyond the elements'}</td>
+  <td>${c.bija ? `<span class="dv" lang="sa">${c.bija}</span> ${c.bijaI}` : '<span class="t-sub">None in the text</span>'}</td>
+  <td class="t-n">${i === 6 ? '1,000' : c.petals}</td>
+</tr>`).join('');
+document.querySelectorAll('#ref-body tr').forEach((tr) => {
+  const go = () => { select({ kind: 'chakra', id: +tr.dataset.i }); details.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' }); };
+  tr.addEventListener('click', go);
+  tr.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+});
+$('gloss').innerHTML = TERMS.map(([dv, ia, lit, def]) => `<div class="g"><dt><span class="g-dev" lang="sa">${dv}</span><span class="g-iast" lang="sa-Latn">${ia}</span><span class="g-lit">${lit}</span></dt><dd>${def}</dd></div>`).join('');
+
+/* ---------- start ---------- */
+updateNarration(); updateChips(); syncControls(); renderDetails();
+let lastCompact = null;
+function maybeBuild() {
+  const c = (viz.clientWidth || window.innerWidth) < 500;
+  if (c !== lastCompact || !E) { lastCompact = c; buildSVG(); }
+}
+if ('ResizeObserver' in window) new ResizeObserver(maybeBuild).observe(viz);
+maybeBuild();
+})();
+</script>
+</body>
+</html>
